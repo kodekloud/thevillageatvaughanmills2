@@ -105,7 +105,9 @@
     header{
         background: #de2d33 !important;
     }
-    
+    .right_column_header {
+        color: #de2d33 ;
+    }
     .main_window{
         border:40px solid #eaf1fb;
     }
