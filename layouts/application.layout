@@ -139,11 +139,11 @@
     /*social media box color*/
     #social_media_wrapper{
         background:#de2d33
-        color:#de2d33;
+    
     }
     /*social media icon inner color*/
     #social_media_wrapper a{
-        color:#18498d;
+        color:#de2d33;
     }
     #social_media_wrapper a:hover{
         color:white;
