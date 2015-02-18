@@ -127,7 +127,7 @@
     }
     
     .feature_title {
-        color:#d9534f;
+        color:#black;
     }
     .site_welcome_msg{
         font-size:22px !important;
