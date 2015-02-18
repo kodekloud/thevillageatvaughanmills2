@@ -251,13 +251,13 @@
                                 
                             </ul> 
                          </li>
-                         <li id="stylenotes_link" class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle">Store Directory <span class="caret"></span></a>
+                         <li id="stylenotes_link" class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle">Style Notes <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                                 <li><a href="/stores">Style Notes</a></li>
                 
                                 <li><a href="/decor_expert">Décor Expert</a></li>
                             </ul> 
-                            </li>
+                        </li>
                          <li id="promotion_link"><a href="/promotions">Promotions</a></li>
                          <li id="leasing_link" class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle">Leasing <span class="caret"></span></a>
                             <ul class="dropdown-menu">
