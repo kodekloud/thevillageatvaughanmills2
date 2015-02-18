@@ -126,6 +126,9 @@
         color:#c8c8c8;
     }
     
+    .feature_title {
+        color:#d9534f;
+    }
     .site_welcome_msg{
         font-size:22px !important;
         margin-top:0 !important;
