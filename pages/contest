@@ -43,7 +43,7 @@
 <div  id="main_content" style="display:none">
     <ul class="breadcrumb">
         <li><a href="/home">Home</a> </li>
-         <li><a href="/contest">Contest</a> </li>
+         <li class="active"><a href="/contest">Contest</a> </li>
     </ul>
     <div class="page_banner">
        Enter to WIN a $250 Gift Card.
