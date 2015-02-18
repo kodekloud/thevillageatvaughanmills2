@@ -103,7 +103,7 @@
             <br>
             <span>
                 <label for="newsletter_signup" style="display:none">Agree Terms</label>
-              <input type="checkbox" class="info_check" id="newsletter_signup"/>&nbsp;I agree to receive emails from 10 Dundas East
+              <input type="checkbox" class="info_check" id="newsletter_signup"/>&nbsp;I agree to receive emails from The Village at Vaughan Mills.
             </span>
             <br>
             <br>
