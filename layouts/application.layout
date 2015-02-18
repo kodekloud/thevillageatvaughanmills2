@@ -251,7 +251,7 @@
                                 
                             </ul> 
                          </li>
-                         <li id="stylenotes_link" class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle">Style Notes <span class="caret"></span></a>
+                         <li  class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle">Style Notes <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                                 <li><a href="/stores">Style Notes</a></li>
                 
