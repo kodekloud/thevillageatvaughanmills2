@@ -117,7 +117,7 @@
         <button onclick="pngZoomIn()" class="zoom-in"><span class="glyphicon glyphicon-plus"></span></button>
         <button onclick="pngZoomOut()" class="zoom-out"><span class="glyphicon glyphicon-minus"></span></button>
     </div>
-    <div id="map" class="panzoom-elements" style=""><img src=""></div>
+    <div id="map" class="panzoom-elements" style=""></div>
     <div class="demo1" id="demo1">
         <canvas class="png_map" width="2240" height="943" id="map_image"></canvas>            
     </div> 
