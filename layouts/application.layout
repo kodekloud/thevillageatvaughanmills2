@@ -103,7 +103,7 @@
     }
     
     header{
-        color: #de2d33 !important;
+        background: #de2d33 !important;
     }
     
     .main_window{
