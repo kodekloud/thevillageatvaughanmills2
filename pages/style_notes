@@ -4,11 +4,16 @@
 <div  id="main_content" style="display:none">
     <ul class="breadcrumb">
         <li><a href="/home">Home</a> </li>
-        <li class="active">Style Notes</li>
+        <li class="active">page template</li>
     </ul>
     <div class="page_banner">
-       
-       <a href="http://kodekloud.s3.amazonaws.com/sites/54cfabe36e6f641f2e010000/522024b812270bc78a1c6ffa14937ecc/65440_VVM_Printable_Reveal_Notes_Final.pdf" target="_blank" alt="download style notes">
+        page template
+    </div>
+    <div class="inside_page_content">
+        <div class="left_column">
+            <img class="inside_banner_image" alt="banner" src="http://kodekloud.s3.amazonaws.com/sites/54d4e9206e6f64691f000000/1f4fed1d858c9ddcaf0105aacf32e785/store_list_banner.jpg"/>
+            
+            <a href="http://kodekloud.s3.amazonaws.com/sites/54cfabe36e6f641f2e010000/522024b812270bc78a1c6ffa14937ecc/65440_VVM_Printable_Reveal_Notes_Final.pdf" target="_blank" alt="download style notes">
                         <img alt="style notes preview" style="display:block;margin-left:auto;margin-right:auto" src="http://kodekloud.s3.amazonaws.com/sites/54cfabe36e6f641f2e010000/522024b812270bc78a1c6ffa14937ecc/StyleNotes_940xunlimited_Final.png" />
                      </a> 
                     <br>
@@ -28,12 +33,8 @@
                       <p><a href= "http://kodekloud.s3.amazonaws.com/sites/54cfabe36e6f641f2e010000/522024b812270bc78a1c6ffa14937ecc/Spring_2013_stylenotes.pdf" target = "_blank">Spring 2013 Style Notes</a> </p>
                       <p><a href= "http://kodekloud.s3.amazonaws.com/sites/54cfabe36e6f641f2e010000/522024b812270bc78a1c6ffa14937ecc/Holiday_2012_stylenotes.pdf" target = "_blank">Holiday 2012 Style Notes</a> </p>
                        <p><a href= "http://kodekloud.s3.amazonaws.com/sites/54cfabe36e6f641f2e010000/522024b812270bc78a1c6ffa14937ecc/Thanksgiving_2012_stylenotes.pdf" target = "_blank">Thanksgiving 2012 Style Notes</a> </p>
-       
-    </div>
-    <div class="inside_page_content">
-        <div class="left_column">
-            <img class="inside_banner_image" alt="banner" src="http://kodekloud.s3.amazonaws.com/sites/54d4e9206e6f64691f000000/1f4fed1d858c9ddcaf0105aacf32e785/store_list_banner.jpg"/>
-            <!--CONTENT GOES HERE FOO! -->
+                    
+            
         </div>
         <div class="right_column">
             <p class="right_column_header">centre information</p>
