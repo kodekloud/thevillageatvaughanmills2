@@ -123,7 +123,7 @@
     }
     
     .navbar .nav li a:hover,.navbar .nav li a:active{
-        color:#c8c8c8;
+        color:#f8c1c3;
     }
     
     .feature_title {
