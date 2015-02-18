@@ -1,0 +1,470 @@
+<style>
+.demo1{
+    float: left;
+    margin-bottom:29px;
+    height: 100%;
+    width: 100%;
+    background-color: #FFFFFF ;
+    overflow: visible !important;
+
+}
+.froala-element img{
+    cursor:default !important;
+}
+.marker {
+    background: url("http://kodekloud.s3.amazonaws.com/sites/54cfab316e6f6433ad020000/530d3a9b7bc13ce4a511089c23463f99/10dundas_pin.png") no-repeat;
+    cursor: pointer;
+    /*display: block;*/
+    height: 75px;
+    margin-top: 5px;
+    outline: medium none;
+    text-indent: -9999px;
+    width: 50px;
+    display:none;
+    position:absolute;
+    top:50%;
+    bottom:50%;
+    left:50%;
+    right:50%;
+}
+
+.png_map{
+
+
+    /*top:0 !important;*/
+    /*bottom:0 !important;*/
+    /*left:0 !important;*/
+    /*right:0 !important;*/
+}
+
+.select_box{
+    float:left;
+    position:absolute;
+    z-index:9999999;
+    background:white;
+    border:1px solid lightgray;
+    width:280px;
+}
+
+.mobile_demo1{
+    display:none;
+}
+
+
+@media (max-width: 767px) {
+    .mobile_demo1{
+        display:block !important;
+        float: left;
+        margin-bottom:29px;
+        height: 100%;
+        width: 100%;
+        background-color: #FFFFFF ;
+        border: 1px solid #b2aaab;
+        overflow:visible !important;
+
+
+    }
+    
+    .demo1{
+        display:none;
+    }
+}
+
+
+
+
+/*#storelist_container{*/
+/*    padding:0;*/
+/*    display:none;*/
+/*}*/
+
+/*#storelist_container li{*/
+/*    list-style:none;*/
+/*}*/
+
+</style>
+<script src="http://kodekloud.s3.amazonaws.com/sites/5438407c6e6f64462d020000/92b82a88144a6207ab1a5e8e0f63d3d1/craftmap.js"></script>
+<div id="pop-over">
+    <span class="pull-left">
+        <p id="pop-over-map-name">Default Name</p>
+        <p id="pop-over-map-phone">Phone Number</p>
+    </span>
+    <span class="pullright">
+        <img alt="arrow" src="http://kodekloud.s3.amazonaws.com/sites/54612c496e6f6474ba020000/efe6c3ca0d8b7c35dc70c11b3c667cdf/arrow_green.png">
+    </span>
+</div>
+<div id="loading_screen">
+    <img alt="loading" src="http://kodekloud.s3.amazonaws.com/sites/5447ebb66e6f641987020000/3604f5c26997bea3de504de139debcec/loading.gif"/>
+</div>
+<div  id="main_content" style="display:none">
+<ul class="breadcrumb">
+    <li><a href="/home">Home</a> </li>
+    <li><a href="/stores">Store Directory</a></li>
+    <li class="active">Centre Map</li>
+</ul>
+<div class="page_banner">
+    Centre Map
+</div>
+<div style="overflow:hidden;height:400px;margin:5px">
+
+
+
+
+    <select id="storelist_container" class="pull-left storelist_dd">
+            <option disabled selected>Select a Store</option>
+    </select>
+    <div id="zControls" class="pull-right">
+        <button onclick="pngZoomIn()" class="zoom-in"><span class="glyphicon glyphicon-plus"></span></button>
+        <button onclick="pngZoomOut()" class="zoom-out"><span class="glyphicon glyphicon-minus"></span></button>
+    </div>
+    <div id="map" class="panzoom-elements" style=""><img src=""></div>
+    <div class="demo1" id="demo1">
+        <canvas class="png_map" width="2240" height="943" id="map_image"></canvas>            
+    </div> 
+    
+
+    <div class="mobile_demo1" id="mobile_demo1">
+        <img alt="map" src="" class="imgMap" id="mobile_map_image" />      
+        <div id="marker_container">
+            <script id="marker_template" type="x-tmpl-mustache/text">
+                <div class="marker" id='scroll_to_marker{{id}}' data-coords="{{x_coordinate}}, {{y_coordinate}}"></div> 
+            </script>
+        </div>
+          
+    </div>   
+
+    
+</div>
+</div>
+
+
+<!--For more information please see http://learnjs.io/blog/2013/11/30/snapsvg-resources/-->
+<script src="//cdnjs.cloudflare.com/ajax/libs/snap.svg/0.3.0/snap.svg-min.js"></script>
+<script src="http://kodekloud.s3.amazonaws.com/sites/5422419e4a616d74d9030000/e1fb5e17ab727d248230fbcb51da868f/jquery.panzoom.min.js"></script>
+<!--<script src="http:////cdn.jsdelivr.net/jquery.transform/0.1/jquery.transform2d.js"></script>-->
+<script>
+    $(document).ready(function() {
+        function renderAll (){
+            var stores = getStoresList();
+            // renderPageData('#storelist_container','#storelist_template',stores)
+            renderStoreList(stores)
+            renderPageData('#marker_container','#marker_template',stores);
+            $("#loading_screen").hide();
+            $("#main_content").show();
+            // specify the type of map here. "png" or "svg"
+            var maptype = "svg"
+            
+            renderMap(maptype);
+           
+        }
+        
+        function renderStoreList(stores){
+            for(var i = 0; i < stores.length;i++){
+                stores[i].x_coordinate = stores[i].x_coordinate - 10;
+                stores[i].y_coordinate = stores[i].y_coordinate - 35;
+               $("#storelist_container").append('<option value="'+stores[i].x_coordinate+', '+stores[i].y_coordinate+', '+stores[i].id+'">'+stores[i].name+'</option>') 
+            }
+            
+            
+        }
+        
+        function renderPageData(container, template, collection){
+            var item_list = [];
+            var item_rendered = [];
+            var template_html = $(template).html();
+            Mustache.parse(template_html);   // optional, speeds up future uses
+            $.each( collection , function( key, val ) {
+                val.x_coordinate = val.x_coordinate - 10;
+                val.y_coordinate = val.y_coordinate - 35;
+                var rendered = Mustache.render(template_html,val);
+                item_rendered.push(rendered);
+    
+            });
+            
+            if (container == "#storelist_container") {
+                
+            } else {
+               $(container).show(); 
+            }
+            
+            
+            $(container).html(item_rendered.join(''));
+        };
+        
+        function renderMap(maptype){
+        var isMobile = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) );
+        var didPanZoom = false;
+        if(navigator.appVersion.indexOf("MSIE 9.") == -1){
+            $('#map').bind('mousemove', function(e){
+                //console.log(e.pageX+","+e.pageY);
+               $('#pop-over').css({'top':e.pageY+20,'left':e.pageX-70});
+            });
+            var s = Snap("#map");
+            var stores = getStoresList();
+            if (maptype == "svg"){
+                var startingMapTransform = 'scale(1)';
+                var startingPanX = 0;
+                var startingPanY = 0;
+                if(isMobile) {
+                        startingMapTransform = 'scale(0.1)';
+                        startingPanX = 0;
+                        startingPanY = 0;
+                }
+                $(".png_map").hide();
+                $("#storelist_container").hide()
+                Snap.load(getSVGMapURL(), function (f) {
+                    $.each( stores, function( key, value ) {
+                        if(value.svgmap_region != null && typeof(value.svgmap_region)  != 'undefined'){
+                            var svg_id = "#" + value.svgmap_region;
+                            f.select(svg_id).mouseover(function() {
+                                if(typeof(value) != 'undefined' && value != null){
+                                    this.addClass("map-mouse-over");
+                                    $("#pop-over").show();
+                                    $("#pop-over-map-name").html(value.name);
+                                    $("#pop-over-map-phone").html(value.phone);
+                                }
+                                          
+                            });
+                                
+                            //add the mouse up handler for hiding the pop over when done hovering
+                            f.select(svg_id).mouseout(function() {
+                                this.removeClass("map-mouse-over");
+                                $("#pop-over").hide(0);
+                                
+                            });
+                                
+                            //add the mouse up function for when the user clicks a store
+                            f.select(svg_id).mouseup(function() {
+                                
+                                if(!isMobile && !didPanZoom){
+                                    
+                                    goToStore(value);
+                                }
+                                didPanZoom = false;
+                                      
+                            });
+                        }
+                    });
+                    s.append(f.select("svg"));
+                });
+                var startingMapTransform = 'scale(0.5)';
+                var startingPanX = 0;
+                var startingPanY = 0;
+                if(isMobile) {
+                        startingMapTransform = 'scale(.5)';
+                        startingPanX = 0;
+                        startingPanY = 0;
+                }
+                
+                $( "#page_content" ).fadeIn( "fast", function() {
+                    var panzoom = $(".panzoom-elements").panzoom({
+                        cursor: "move",
+                        increment: 0.5,
+                        minScale: 0.5,
+                        maxScale: 2,
+                        transition: true,
+                        duration: 150,
+                        easing: "ease-in-out",
+                        $zoomIn: $('.zoom-in'),
+                        $zoomOut: $('.zoom-out'),
+                        $zoomRange: $('.zoom-range'),
+                        startTransform: startingMapTransform
+                        
+            
+                    });
+                    $(".panzoom-elements").panzoom("pan", startingPanX, startingPanY, { relative: true });
+                    
+                    panzoom.on('panzoomchange', function(e, panzoom, matrix, changed) {
+                      didPanZoom = true;
+                    });
+                    
+                    panzoom.on('panzoomend', function(e, panzoom, matrix, changed) {
+                      didPanZoom = false;
+                    });
+                });
+                
+                
+            } else {
+                // $("#zControls").hide();
+                var propertyDetails = getPropertyDetails();
+                $(".panzoom-elements").hide();
+                
+                if(isMobile) {
+                        $("#mobile_map_image").attr("src",getPNGMapURL());
+                        $(function(){
+                            $('.mobile_demo1').craftmap({
+                                image: {
+                                    width: 2240,
+                                    height: 943,
+                                    name: 'imgMap'
+                                },
+                                map: {
+                                    position: 'center'
+                                }
+                            });
+                            // $("#anchor_id").click();
+                            // $("#scroll_to_marker").click();
+                        });
+                   
+                        
+                } else {
+                    $(".png_map").css("background", "url("+getPNGMapURL()+")")
+                    var startingMapTransform = 'scale(0.5)';
+                    var startingPanX = 0;
+                    var startingPanY = 0;
+                    $( "#page_content" ).fadeIn( "fast", function() {
+                        var panzoom = $(".png_map").panzoom({
+                            cursor: "move",
+                            increment: 0.1,
+                            minScale: 0.5,
+                            maxScale: 1.5,
+                            transition: true,
+                            duration: 150,
+                            easing: "ease-in-out",
+                            $zoomIn: $('.zoom-in'),
+                            $zoomOut: $('.zoom-out'),
+                            $zoomRange: $('.zoom-range'),
+                            startTransform: startingMapTransform
+                            
+                
+                        });
+                        $(".png_map").panzoom("pan", startingPanX, startingPanY, { relative: true });
+                        
+                        panzoom.on('panzoomchange', function(e, panzoom, matrix, changed) {
+                          didPanZoom = true;
+                        });
+                        
+                        panzoom.on('panzoomend', function(e, panzoom, matrix, changed) {
+                          didPanZoom = false;
+                        });
+                        // panzoom.on("panzoomstart", function( e, panzoom ) { console.log( panzoom.getMatrix() ); });
+                    });
+                    
+                    
+                    lmargin = parseInt(propertyDetails.map_image_width) / 2
+                    w = parseInt(propertyDetails.map_image_width)
+                    h = parseInt(propertyDetails.map_image_height)
+                    $(".demo1").css({"width": w+"px", "height":h+"px", "margin-left": "-600px", "margin-top":"-300px"})
+                    
+                }
+                
+                
+                
+                $(".png_map").parent().on('mousewheel.focal', function( e ) {
+                    e.preventDefault();
+                    var delta = e.delta || e.originalEvent.wheelDelta;
+                    var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
+                    $(".png_map").panzoom('zoom', zoomOut, {
+                        increment: 0.1,
+                        animate: false,
+                        focal: e
+                    });
+                    // console.log(e)
+                });
+
+                
+                
+                
+            }
+
+               
+            }else{
+                $('#loading').hide();
+                $('#zControls').hide();
+                $('#map').hide();
+                $( "#page_content" ).fadeIn( "fast");
+            }
+        }
+        
+        
+    
+    
+    function goToStore(store_details){
+        if(typeof(store_details) != 'undefined' && store_details != null){
+            window.location.href = "/stores/"+store_details.slug;
+        }
+    }
+
+    function getSVGMapURL(){
+        initData();
+        var mallDataJSON = JSON.parse(sessionStorage.mallData);
+        return 'http://cdn.mallmaverick.com' + mallDataJSON.property.svgmap_url;
+    }
+    
+    $("#storelist_container").on('change', function() {
+        
+        var isMobile = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) );
+        
+        if (!isMobile) {
+            coords = this.value.split(",");
+            var propertyDetails = getPropertyDetails();
+            x = coords[0]
+            y = coords[1]
+            x = (parseInt(propertyDetails.map_image_width)/2) - parseInt(x);
+            y = (parseInt(propertyDetails.map_image_height)/2) - parseInt(y);
+            v = $(".png_map").panzoom("getMatrix");
+            new_width = (v[0] * propertyDetails.map_image_width)
+            new_height = (v[3] * propertyDetails.map_image_height)
+            
+            x = (x * new_width) / 2240 + (10 * (1 / v[0]))
+            y = ((y * new_height) / 943) + (27 * (1 / v[3]))
+            pin_x = (parseInt(coords[0]) - 12)
+            pin_y = (parseInt(coords[1]) - 27) 
+            var canvas = document.getElementById('map_image');
+            var context = canvas.getContext('2d');  
+            context.clearRect ( 0 , 0 , canvas.width, canvas.height );
+            var img = new Image;
+            img.src = "http://kodekloud.s3.amazonaws.com/sites/54cfab316e6f6433ad020000/530d3a9b7bc13ce4a511089c23463f99/10dundas_pin.png"
+            context.drawImage(img,pin_x,pin_y);
+            // f = []
+            // f.clientX =  x + 530 
+            // f.clientY = y + 379 
+            
+            
+            // $(".png_map").panzoom("zoom", 0.5, { 
+            //     animate:true, 
+            //     focal: f
+            // })
+            
+            $(".png_map").panzoom("pan", x, y, {
+                  relative: false,
+                  animate: true
+              });
+              
+            f = []
+            // var parentOffset = $(".png_map").offset(); 
+            // f.clientX =  x + 530 
+            // f.clientY = y + 379 
+            // // f.clientY = 389
+            // // console.log(x)
+            // // console.log(y)
+            // // console.log("=-=-=-=-=-=-=-")
+            // // console.log(pin_x)
+            // // console.log(pin_y)
+            // // f.clientX =  ((x * 100) / 42) - 10
+            // // f.clientY = ((y * 100) / 49) - 10
+            // console.log(f)
+            // f.clientX = 974
+            // f.clientY = 389
+        
+        } else {
+            coords = this.value.split(",");
+            console.log(coords)
+            $("#scroll_to_marker"+coords[2]).show();
+            $("#scroll_to_marker")+coords[2].click();
+        }
+        
+        
+        
+    });
+    
+    
+    
+        loadMallData(renderAll);  
+    });
+    
+    
+    
+   
+    
+</script>
