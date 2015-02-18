@@ -109,7 +109,7 @@
         color: #de2d33 ;
     }
     .main_window{
-        border:40px solid #eaf1fb;
+        border:40px solid #fdd2d4;
     }
     .btn-primary{
         background: #d9534f !important;
