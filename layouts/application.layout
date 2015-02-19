@@ -190,7 +190,7 @@
     @media (max-width: 767px) {
         .main_window{
             width:100%;
-            border:15px solid #eaf1fb !important;
+            border:15px solid #fdd2d4 !important;
             border-top:none !important;
         }  
     }
