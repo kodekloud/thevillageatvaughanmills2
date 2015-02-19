@@ -177,7 +177,7 @@
             var s = Snap("#map");
             var stores = getStoresList();
             if (maptype == "svg"){
-                var startingMapTransform = 'scale(1)';
+                var startingMapTransform = 'scale(1.5)';
                 var startingPanX = 0;
                 var startingPanY = -100;
                 if(isMobile) {
