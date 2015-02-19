@@ -12,7 +12,7 @@
     <div class="inside_page_content">
         <div class="left_column">
             <img class="inside_banner_image" alt="banner" src="http://kodekloud.s3.amazonaws.com/sites/54e4c5846e6f640b1b000000/0c6440cf3178978c6ae2b530b853f567/contactus.jpg"/>
-            <form name="contact_form" id="contact_form" method="post" action="http://mobilefringe.createsend.com/t/d/s/tkuikd/">
+            <form name="contact_form" id="contact_form" method="post" action="http://mobilefringe.createsend.com/t/d/s/tkudlh/">
                 <div class="row" style="margin-left:-15px;margin-right:-15px">
                     <div class="col-sm-6 col-md-6">
                         <label for="name">Name</label>
@@ -20,21 +20,21 @@
                     </div>
                     <div class="col-sm-6 col-md-6">
                         <label for="email" >E-mail</label>
-                        <input name="cm-tkuikd-tkuikd" id="email" class="form-control" type="text" value="" required>
+                        <input name="cm-tkudlh-tkudlh" id="email" class="form-control" type="text" value="" required>
                     </div>
                 </div>
                 <br>
                 <div class="row" style="margin-left:-15px;margin-right:-15px">
                     <div class="col-sm-12 col-md-12">
                         <label for="subject">Subject</label>
-                        <input name="cm-f-jrhiil" id="subject" class="form-control" type="text" required>
+                        <input name="cm-f-jrhiih" id="subject" class="form-control" type="text" required>
                     </div>
                 </div>
                 <br>
                 <div class="row" style="margin-left:-15px;margin-right:-15px">
                     <div class="col-sm-12 col-md-12">
                         <label for="message">Message</label>
-                        <textarea name="cm-f-jrhiir" id="message" rows="8" class="form-control" required></textarea>
+                        <textarea name="cm-f-jrhiik" id="message" rows="8" class="form-control" required></textarea>
                     </div>
                     
                     <div class="col-sm-12 col-md-12">
