@@ -36,8 +36,20 @@
                         <label for="message">Message</label>
                         <textarea name="cm-f-jrhiir" id="message" rows="8" class="form-control" required></textarea>
                     </div>
-                        <div class="col-sm-12 col-md-12"><br/>
-                        <button id="submit" class="btn btn-primary" type="submit">Submit</button>
+                    
+                    <div class="col-sm-12 col-md-12">
+                    <br>
+                        <label for="enterVerify">Enter the following number below to proceed: <div id="verifyNum"></div></label><br>
+                        <input type="hidden" value="701469" id="verifyNumHidden" name="verifyNumHidden" />
+                        <input type="text" id="enterVerify" name="enterVerify" />
+                    </div>
+                    
+                    
+                </div>
+                <div class="row" style="margin-left:-15px;margin-right:-15px">
+                    <div class="col-sm-12 col-md-12">
+                        <label for="subject">Subject</label>
+                        <input name="cm-f-jrhiil" id="subject" class="form-control" type="text" required>
                     </div>
                 </div>
             </form>
@@ -57,6 +69,28 @@
     </div>
 </div>
 <script>
+    function randomgen() {
+            var rannumber='';
+            for(ranNum=1; ranNum<=6; ranNum++){
+                rannumber+=Math.floor(Math.random()*10).toString();
+            }
+            $('#verifyNum').html(rannumber);
+            $('#verifyNumHidden').val(rannumber);
+        }
+        randomgen();
+      
+        
+        $('#contact_form').submit(function(e) {
+
+            if($('#enterVerify').val() == $('#verifyNumHidden').val() ) {
+            }
+            else
+            {
+                alert("Please Enter Correct Verification Number");
+                randomgen();
+                e.preventDefault();
+            }
+        });
     $(document).ready(function() {
         function renderAll (){
             var propertyDetails = getPropertyDetails();
