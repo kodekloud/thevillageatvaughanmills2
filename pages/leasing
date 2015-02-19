@@ -19,7 +19,7 @@
                <br>
                <strong>Total GLA:  </strong>138,833 square feet
               
-          </section>
+         
           
           <section class="article-text">
                
@@ -85,7 +85,7 @@
             
         </div>
   
-
+</div>
 <script>
     $(document).ready(function() {
         function renderAll (){
