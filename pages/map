@@ -125,7 +125,7 @@
             $("#loading_screen").hide();
             $("#main_content").show();
             // specify the type of map here. "png" or "svg"
-            var maptype = "svg"
+            var maptype = "png"
             renderMap(maptype);
             
             
@@ -179,11 +179,11 @@
             if (maptype == "svg"){
                 var startingMapTransform = 'scale(1)';
                 var startingPanX = 0;
-                var startingPanY = 0;
+                var startingPanY = -100;
                 if(isMobile) {
-                        startingMapTransform = 'scale(0.1)';
-                        startingPanX = 0;
-                        startingPanY = 0;
+                        startingMapTransform = 'scale(0.5)';
+                        startingPanX = -180;
+                        startingPanY = -100;
                 }
                 $(".png_map").hide();
                 $("#storelist_container").hide()
