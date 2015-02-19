@@ -95,8 +95,8 @@
             <option disabled selected>Select a Store</option>
     </select>
     <div id="zControls" class="pull-right">
-        <button onclick="pngZoomIn()" class="zoom-in"><span class="glyphicon glyphicon-plus"></span></button>
-        <button onclick="pngZoomOut()" class="zoom-out"><span class="glyphicon glyphicon-minus"></span></button>
+        <button class="zoom-in"><span class="glyphicon glyphicon-plus"></span></button>
+        <button class="zoom-out"><span class="glyphicon glyphicon-minus"></span></button>
     </div>
     <div id="map" class="panzoom-elements" style=""><img src=""></div>
     
@@ -177,7 +177,7 @@
             var s = Snap("#map");
             var stores = getStoresList();
             if (maptype == "svg"){
-                var startingMapTransform = 'scale(2)';
+                var startingMapTransform = 'scale(1)';
                 var startingPanX = 0;
                 var startingPanY = -100;
                 if(isMobile) {
