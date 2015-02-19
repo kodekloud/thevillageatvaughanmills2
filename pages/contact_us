@@ -47,9 +47,8 @@
                     
                 </div>
                 <div class="row" style="margin-left:-15px;margin-right:-15px">
-                    <div class="col-sm-12 col-md-12">
-                        <label for="subject">Subject</label>
-                        <input name="cm-f-jrhiil" id="subject" class="form-control" type="text" required>
+                    <div class="col-sm-12 col-md-12"><br/>
+                        <button id="submit" class="btn btn-primary" type="submit">Submit</button>
                     </div>
                 </div>
             </form>
