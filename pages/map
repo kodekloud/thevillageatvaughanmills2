@@ -1,89 +1,70 @@
 <style>
-.demo1{
-    float: left;
-    margin-bottom:29px;
-    height: 100%;
-    width: 100%;
-    background-color: #FFFFFF ;
-    overflow: visible !important;
 
+.smooth_zoom_preloader {
+	background-image: url(http://kodekloud.s3.amazonaws.com/sites/54d4e9206e6f64691f000000/d9e054e28dd1bad70a952dd85777e93f/preloader.gif);
+}	
+.smooth_zoom_icons {
+	background-image: url(http://kodekloud.s3.amazonaws.com/sites/54d4e9206e6f64691f000000/d9e054e28dd1bad70a952dd85777e93f/icons.png);
 }
-.froala-element img{
-    cursor:default !important;
+#zoom_container{
+    overflow:visible !important;
 }
-.marker {
-    background: url("http://kodekloud.s3.amazonaws.com/sites/54cfab316e6f6433ad020000/530d3a9b7bc13ce4a511089c23463f99/10dundas_pin.png") no-repeat;
-    cursor: pointer;
-    /*display: block;*/
-    height: 75px;
-    margin-top: 5px;
-    outline: medium none;
-    text-indent: -9999px;
-    width: 50px;
-    display:none;
-    position:absolute;
-    top:50%;
-    bottom:50%;
-    left:50%;
-    right:50%;
-}
-
-.png_map{
-
-
-    /*top:0 !important;*/
-    /*bottom:0 !important;*/
-    /*left:0 !important;*/
-    /*right:0 !important;*/
-}
-
-.select_box{
-    float:left;
-    position:absolute;
-    z-index:9999999;
-    background:white;
-    border:1px solid lightgray;
-    width:280px;
-}
-
-.mobile_demo1{
-    display:none;
-}
-
-
+#zoom_container .landmarks{
+		position:absolute;
+		z-index:10;	
+		top:0px;
+		left:0px;
+		font-family: Helvetica, Arial, Verdana;
+		font-size:12px;
+		color: #ffffff;
+	}	
+	#zoom_container .landmarks .item {
+		position:absolute;		
+		text-align:center;		
+		/*display: none;	*/
+	}	
+	#zoom_container .landmarks .lable div {
+		width: 100px;
+		padding: 4px;		
+	}	
+	#zoom_container .landmarks .mark .text{
+		background-color:#6e6e6e;
+		padding:10px;
+		width:150px;
+		border-radius:5px;
+		margin-bottom:10px;
+		padding-top:12px;
+	}	
+	
+	.mark a{
+	    color:black;
+	    display:none;
+	}
+	
+	#png_map{
+	    width:2240px;
+		height: 943px;
+		min-width:2240px;
+		min-height: 943px;
+	}
+	
+	.text {
+	    color:white;
+	    font-size:16px;
+	    padding-top:2px;
+	}
 @media (max-width: 767px) {
-    .mobile_demo1{
-        display:block !important;
-        float: left;
-        margin-bottom:29px;
-        height: 100%;
-        width: 100%;
-        background-color: #FFFFFF ;
-        border: 1px solid #b2aaab;
-        overflow:visible !important;
-
-
-    }
-    
-    .demo1{
-        display:none;
+    #zoom_container{
+        overflow:hidden !important;
     }
 }
 
 
 
 
-/*#storelist_container{*/
-/*    padding:0;*/
-/*    display:none;*/
-/*}*/
-
-/*#storelist_container li{*/
-/*    list-style:none;*/
-/*}*/
 
 </style>
-<script src="http://kodekloud.s3.amazonaws.com/sites/5438407c6e6f64462d020000/92b82a88144a6207ab1a5e8e0f63d3d1/craftmap.js"></script>
+<script src="http://kodekloud.s3.amazonaws.com/sites/54d4e9206e6f64691f000000/d9e054e28dd1bad70a952dd85777e93f/jquery.smoothZoom.min.js"></script>
 <div id="pop-over">
     <span class="pull-left">
         <p id="pop-over-map-name">Default Name</p>
@@ -117,22 +98,15 @@
         <button onclick="pngZoomIn()" class="zoom-in"><span class="glyphicon glyphicon-plus"></span></button>
         <button onclick="pngZoomOut()" class="zoom-out"><span class="glyphicon glyphicon-minus"></span></button>
     </div>
-    <div id="map" class="panzoom-elements" style=""></div>
-    <div class="demo1" id="demo1">
-        <canvas class="png_map" width="2240" height="943" id="map_image"></canvas>            
-    </div> 
+    <div id="map" class="panzoom-elements" style=""><img src=""></div>
     
-
-    <div class="mobile_demo1" id="mobile_demo1">
-        <img alt="map" src="" class="imgMap" id="mobile_map_image" />      
-        <div id="marker_container">
-            <script id="marker_template" type="x-tmpl-mustache/text">
-                <div class="marker" id='scroll_to_marker{{id}}' data-coords="{{x_coordinate}}, {{y_coordinate}}"></div> 
-            </script>
-        </div>
-          
-    </div>   
-
+    <div id="zoom_container">
+        <img id="png_map" class="png_map" alt="center map" src="" width="2240" height="943"/>
+    
+        <div class="landmarks" data-show-at-zoom="100" data-allow-drag="true">
+            
+	    </div>    
+    </div>
     
 </div>
 </div>
@@ -146,23 +120,24 @@
     $(document).ready(function() {
         function renderAll (){
             var stores = getStoresList();
-            // renderPageData('#storelist_container','#storelist_template',stores)
-            renderStoreList(stores)
-            renderPageData('#marker_container','#marker_template',stores);
+            // renderPageData('#landmark_container','#landmark_template',stores)
+            
             $("#loading_screen").hide();
             $("#main_content").show();
             // specify the type of map here. "png" or "svg"
             var maptype = "svg"
-            
             renderMap(maptype);
+            
+            
            
         }
         
         function renderStoreList(stores){
             for(var i = 0; i < stores.length;i++){
-                stores[i].x_coordinate = stores[i].x_coordinate - 10;
-                stores[i].y_coordinate = stores[i].y_coordinate - 35;
-               $("#storelist_container").append('<option value="'+stores[i].x_coordinate+', '+stores[i].y_coordinate+', '+stores[i].id+'">'+stores[i].name+'</option>') 
+                // stores[i].x_coordinate = stores[i].x_coordinate - 10;
+                // stores[i].y_coordinate = stores[i].y_coordinate - 35;
+               $("#storelist_container").append('<option value="'+stores[i].x_coordinate+','+stores[i].y_coordinate+','+stores[i].id+'">'+stores[i].name+'</option>') 
+                
             }
             
             
@@ -174,8 +149,8 @@
             var template_html = $(template).html();
             Mustache.parse(template_html);   // optional, speeds up future uses
             $.each( collection , function( key, val ) {
-                val.x_coordinate = val.x_coordinate - 10;
-                val.y_coordinate = val.y_coordinate - 35;
+                val.x_coordinate = val.x_coordinate - 35;
+                val.y_coordinate = val.y_coordinate + 5;
                 var rendered = Mustache.render(template_html,val);
                 item_rendered.push(rendered);
     
@@ -247,13 +222,13 @@
                     });
                     s.append(f.select("svg"));
                 });
-                var startingMapTransform = 'scale(1)';
+                var startingMapTransform = 'scale(0.5)';
                 var startingPanX = 0;
-                var startingPanY = -100;
+                var startingPanY = 0;
                 if(isMobile) {
                         startingMapTransform = 'scale(.5)';
-                        startingPanX = -180;
-                        startingPanY = -100;
+                        startingPanX = 0;
+                        startingPanY = 0;
                 }
                 
                 $( "#page_content" ).fadeIn( "fast", function() {
@@ -288,83 +263,33 @@
                 // $("#zControls").hide();
                 var propertyDetails = getPropertyDetails();
                 $(".panzoom-elements").hide();
-                
+                $("#zControls").hide();
+                $("#png_map").attr("src", getPNGMapURL())
                 if(isMobile) {
-                        $("#mobile_map_image").attr("src",getPNGMapURL());
-                        $(function(){
-                            $('.mobile_demo1').craftmap({
-                                image: {
-                                    width: 2240,
-                                    height: 943,
-                                    name: 'imgMap'
-                                },
-                                map: {
-                                    position: 'center'
-                                }
-                            });
-                            // $("#anchor_id").click();
-                            // $("#scroll_to_marker").click();
-                        });
-                   
-                        
+                    initial_zoom = 15;
+                    zoom_min = 15
                 } else {
-                    $(".png_map").css("background", "url("+getPNGMapURL()+")")
-                    var startingMapTransform = 'scale(0.5)';
-                    var startingPanX = 0;
-                    var startingPanY = 0;
-                    $( "#page_content" ).fadeIn( "fast", function() {
-                        var panzoom = $(".png_map").panzoom({
-                            cursor: "move",
-                            increment: 0.1,
-                            minScale: 0.5,
-                            maxScale: 1.5,
-                            transition: true,
-                            duration: 150,
-                            easing: "ease-in-out",
-                            $zoomIn: $('.zoom-in'),
-                            $zoomOut: $('.zoom-out'),
-                            $zoomRange: $('.zoom-range'),
-                            startTransform: startingMapTransform
-                            
-                
-                        });
-                        $(".png_map").panzoom("pan", startingPanX, startingPanY, { relative: true });
-                        
-                        panzoom.on('panzoomchange', function(e, panzoom, matrix, changed) {
-                          didPanZoom = true;
-                        });
-                        
-                        panzoom.on('panzoomend', function(e, panzoom, matrix, changed) {
-                          didPanZoom = false;
-                        });
-                        // panzoom.on("panzoomstart", function( e, panzoom ) { console.log( panzoom.getMatrix() ); });
-                    });
-                    
-                    
-                    lmargin = parseInt(propertyDetails.map_image_width) / 2
-                    w = parseInt(propertyDetails.map_image_width)
-                    h = parseInt(propertyDetails.map_image_height)
-                    $(".demo1").css({"width": w+"px", "height":h+"px", "margin-left": "-600px", "margin-top":"-300px"})
-                    
+                    initial_zoom = 40;
+                    zoom_min = 40;
                 }
-                
-                
-                
-                $(".png_map").parent().on('mousewheel.focal', function( e ) {
-                    e.preventDefault();
-                    var delta = e.delta || e.originalEvent.wheelDelta;
-                    var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
-                    $(".png_map").panzoom('zoom', zoomOut, {
-                        increment: 0.1,
-                        animate: false,
-                        focal: e
-                    });
-                    // console.log(e)
+                jQuery(function($){
+            		$('#png_map').smoothZoom({
+            		    zoom_MAX: "300",
+            		    initial_ZOOM: initial_zoom,
+            		    zoom_MIN: zoom_min,
+            		    animation_SMOOTHNESS: 10,
+    	     	        initial_POSITION: "0 0",
+            	    	pan_BUTTONS_SHOW: "NO",
+            	    	zoom_OUT_TO_FIT: "NO",
+            	     	button_SIZE: 34,
+            	        button_ALIGN: "top right",    
+            	     	container: 'zoom_container',
+            	     	responsive: true,
+            	     	responsive_maintain_ratio: false
+            		});
                 });
-
                 
-                
-                
+                renderStoreList(stores)
             }
 
                
@@ -394,67 +319,30 @@
     $("#storelist_container").on('change', function() {
         
         var isMobile = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) );
-        
-        if (!isMobile) {
-            coords = this.value.split(",");
-            var propertyDetails = getPropertyDetails();
-            x = coords[0]
-            y = coords[1]
-            x = (parseInt(propertyDetails.map_image_width)/2) - parseInt(x);
-            y = (parseInt(propertyDetails.map_image_height)/2) - parseInt(y);
-            v = $(".png_map").panzoom("getMatrix");
-            new_width = (v[0] * propertyDetails.map_image_width)
-            new_height = (v[3] * propertyDetails.map_image_height)
-            
-            x = (x * new_width) / 2240 + (10 * (1 / v[0]))
-            y = ((y * new_height) / 943) + (27 * (1 / v[3]))
-            pin_x = (parseInt(coords[0]) - 12)
-            pin_y = (parseInt(coords[1]) - 27) 
-            var canvas = document.getElementById('map_image');
-            var context = canvas.getContext('2d');  
-            context.clearRect ( 0 , 0 , canvas.width, canvas.height );
-            var img = new Image;
-            img.src = "http://kodekloud.s3.amazonaws.com/sites/54cfab316e6f6433ad020000/530d3a9b7bc13ce4a511089c23463f99/10dundas_pin.png"
-            context.drawImage(img,pin_x,pin_y);
-            // f = []
-            // f.clientX =  x + 530 
-            // f.clientY = y + 379 
-            
-            
-            // $(".png_map").panzoom("zoom", 0.5, { 
-            //     animate:true, 
-            //     focal: f
-            // })
-            
-            $(".png_map").panzoom("pan", x, y, {
-                  relative: false,
-                  animate: true
-              });
-              
-            f = []
-            // var parentOffset = $(".png_map").offset(); 
-            // f.clientX =  x + 530 
-            // f.clientY = y + 379 
-            // // f.clientY = 389
-            // // console.log(x)
-            // // console.log(y)
-            // // console.log("=-=-=-=-=-=-=-")
-            // // console.log(pin_x)
-            // // console.log(pin_y)
-            // // f.clientX =  ((x * 100) / 42) - 10
-            // // f.clientY = ((y * 100) / 49) - 10
-            // console.log(f)
-            // f.clientX = 974
-            // f.clientY = 389
-        
+        coords = this.value.split(",");
+        var zoomData = $('#png_map').smoothZoom('getZoomData');
+        x_coord = parseInt(coords[0])
+        y_coord = parseInt(coords[1])
+        name = $("#storelist_container option:selected").text();
+        $('#png_map').smoothZoom('removeLandmark')
+        if (isMobile) {
+            $('#png_map').smoothZoom('focusTo', {x:x_coord, y:y_coord, zoom:200});    
         } else {
-            coords = this.value.split(",");
-            console.log(coords)
-            $("#scroll_to_marker"+coords[2]).show();
-            $("#scroll_to_marker")+coords[2].click();
+            $('#png_map').smoothZoom('focusTo', {x:x_coord, y:y_coord, zoom:300});
         }
         
-        
+        $('#png_map').smoothZoom('addLandmark', 
+			[
+			'<div class="item mark" data-show-at-zoom="0" data-position="'+x_coord+','+y_coord+'">\
+				<div>\
+					<div class="text">\
+					<strong>'+name+'</strong>\
+				</div>\
+				<img src="http://kodekloud.s3.amazonaws.com/sites/54cfab316e6f6433ad020000/530d3a9b7bc13ce4a511089c23463f99/10dundas_pin.png" width="40px" height="59px" alt="marker" />\
+				</div>\
+			</div>'
+			]
+		);
         
     });
     
