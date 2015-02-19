@@ -103,7 +103,7 @@
     }
     
     header{
-        background: #de2d33 !important;
+        background: #c02329 !important;
     }
     .right_column_header {
         color: #de2d33 ;
