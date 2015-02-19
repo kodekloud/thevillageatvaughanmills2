@@ -253,7 +253,7 @@
                 if(isMobile) {
                         startingMapTransform = 'scale(.5)';
                         startingPanX = 0;
-                        startingPanY = 0;
+                        startingPanY = -100;
                 }
                 
                 $( "#page_content" ).fadeIn( "fast", function() {
