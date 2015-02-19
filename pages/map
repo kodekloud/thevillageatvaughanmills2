@@ -177,14 +177,7 @@
             var s = Snap("#map");
             var stores = getStoresList();
             if (maptype == "svg"){
-                var startingMapTransform = 'scale(1)';
-                var startingPanX = 0;
-                var startingPanY = -100;
-                if(isMobile) {
-                        startingMapTransform = 'scale(0.5)';
-                        startingPanX = -180;
-                        startingPanY = -100;
-                }
+                
                 $(".png_map").hide();
                 $("#storelist_container").hide()
                 Snap.load(getSVGMapURL(), function (f) {
@@ -222,13 +215,13 @@
                     });
                     s.append(f.select("svg"));
                 });
-                var startingMapTransform = 'scale(0.5)';
+                var startingMapTransform = 'scale(1)';
                 var startingPanX = 0;
-                var startingPanY = 0;
+                var startingPanY = -100;
                 if(isMobile) {
-                        startingMapTransform = 'scale(.5)';
-                        startingPanX = 0;
-                        startingPanY = 0;
+                        startingMapTransform = 'scale(0.5)';
+                        startingPanX = -180;
+                        startingPanY = -100;
                 }
                 
                 $( "#page_content" ).fadeIn( "fast", function() {
