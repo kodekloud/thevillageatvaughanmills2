@@ -106,7 +106,7 @@
         background: #c02329 !important;
     }
     .right_column_header {
-        color: #de2d33 ;
+        color: #c02329 ;
     }
     .main_window{
         border:40px solid #fdd2d4;
