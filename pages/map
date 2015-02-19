@@ -125,7 +125,7 @@
             $("#loading_screen").hide();
             $("#main_content").show();
             // specify the type of map here. "png" or "svg"
-            var maptype = "png"
+            var maptype = "svg"
             renderMap(maptype);
             
             
