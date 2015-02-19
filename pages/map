@@ -179,9 +179,9 @@
             if (maptype == "svg"){
                 var startingMapTransform = 'scale(1)';
                 var startingPanX = 0;
-                var startingPanY = -400;
+                var startingPanY = -100;
                 if(isMobile) {
-                        startingMapTransform = 'scale(1)';
+                        startingMapTransform = 'scale(0.5)';
                         startingPanX = -180;
                         startingPanY = -100;
                 }
