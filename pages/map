@@ -252,7 +252,7 @@
                 var startingPanY = -100;
                 if(isMobile) {
                         startingMapTransform = 'scale(.5)';
-                        startingPanX = -150;
+                        startingPanX = -200;
                         startingPanY = -100;
                 }
                 
