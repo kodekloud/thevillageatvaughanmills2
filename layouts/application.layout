@@ -159,6 +159,12 @@
         background:#de2d33;
     }
     
+    .map-mouse-over{
+    /*set color of store highlight and hover over for SVG map*/
+    fill: #fdd2d4;
+    }
+    
+    
     /*inside page banners*/
     .page_banner{
         color:black;
