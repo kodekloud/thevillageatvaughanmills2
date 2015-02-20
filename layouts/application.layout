@@ -122,7 +122,7 @@
     .mobile_menu {
         background:white;
     }
-    .mobile_menu {
+    .mobile_menu a{
         color:black;
     }
     .mobile_menu a:hover {
