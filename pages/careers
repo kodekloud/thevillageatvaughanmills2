@@ -16,10 +16,10 @@
     <ul class="breadcrumb">
         <li><a href="/home">Home</a> </li>
         <li><a href="/contact_us">Contact Us</a> </li>
-        <li class="active">Careers</li>
+        <li class="active">Jobs</li>
     </ul>
     <div class="page_banner">
-        Careers
+        Jobs
     </div>
     <div class="inside_page_content">
         <div class="left_column">
