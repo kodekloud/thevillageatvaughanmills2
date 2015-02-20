@@ -188,7 +188,7 @@
         /* For Fx 3.6 to 15 */
         background: -moz-linear-gradient(left,#f8a0a4,#f8a0a4, #f8a0a4);
         /* Standard syntax */
-        background: linear-gradient(to right,#ee8b8f,#fdadb0, #ee8b8f); 
+        background: linear-gradient(to right,#f8a0a4,#f8a0a4, #f8a0a4); 
         box-shadow: 0px 0px 30px lightgray inset;
     }
     
