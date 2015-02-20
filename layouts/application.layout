@@ -119,12 +119,8 @@
     
     /*menu colors*/
     
-    .mobile_menu {
-        background:white;
-    }
-    .mobile_menu a{
-        color:black;
-    }
+    
+   
     .mobile_menu a:hover {
         color:#f8c1c3;
     }
