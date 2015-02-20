@@ -112,8 +112,8 @@
         border:40px solid #fdd2d4;
     }
     .btn-primary{
-        background: #66bf6b !important;
-        border-color:#419d44 !important;
+        background: #c02329 !important;
+        border-color:#d43f3a !important;
         text-align:center;
     }
     
@@ -188,7 +188,7 @@
         /* For Fx 3.6 to 15 */
         background: -moz-linear-gradient(left,#f8a0a4,#f8a0a4, #f8a0a4);
         /* Standard syntax */
-        background: linear-gradient(to right,#f8a0a4,#f8a0a4, #f8a0a4); 
+        background: linear-gradient(to right,#ee8b8f,#fdadb0, #ee8b8f); 
         box-shadow: 0px 0px 30px lightgray inset;
     }
     
