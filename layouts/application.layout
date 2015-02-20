@@ -121,6 +121,8 @@
     
     .mobile_menu {
         background:white;
+    }
+    .mobile_menu {
         color:black;
     }
     .mobile_menu a:hover {
