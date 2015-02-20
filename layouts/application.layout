@@ -118,6 +118,13 @@
     }
     
     /*menu colors*/
+    
+    .mobile_menu {
+        background:#fdd2d4;
+    }
+    .mobile_menu a:hover {
+        color:#f8c1c3;
+    }
     .navbar .nav li a{
         color:white;
     }
