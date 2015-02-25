@@ -52,7 +52,8 @@
         function renderAll (){
             var propertyDetails = getPropertyDetails();
             renderPageData('#centre_info_container','#centre_info_template',propertyDetails, 'property_details')
-            all_promos = getPromotionsList();
+            all_promos = getPromotionsList(); 
+            all_promos = all_promos.reverse();
             if (all_promos.length > 0 ) {
                 renderPageData("#promo_list_container","#promo_list_template", all_promos, "promos");    
             } else {
