@@ -59,7 +59,8 @@
             var propertyDetails = getPropertyDetails();
             renderPageData('#centre_info_container','#centre_info_template',propertyDetails, 'property_details')
             
-            all_jobs = getJobsList();
+            all_jobs = getJobsList(); 
+            all_jobs = all_jobs.reverse();
             if (all_jobs.length > 0 ) {
                 renderPageData("#promo_list_container","#promo_list_template", all_jobs, "jobs");    
             } else {
