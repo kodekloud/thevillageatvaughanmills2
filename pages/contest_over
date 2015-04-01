@@ -4,14 +4,14 @@
 <div  id="main_content" style="display:none">
     <ul class="breadcrumb">
         <li><a href="/home">Home</a> </li>
-        <li class="active">Contest has ended"</li>
+        <li class="active">Contest has ended</li>
     </ul>
     <div class="page_banner">
-       Contest has ended"
+       Contest has ended
     </div>
     <div class="inside_page_content">
         <div class="left_column">
-            <img class="inside_banner_image" alt="banner" src="http://kodekloud.s3.amazonaws.com/sites/54d4e9206e6f64691f000000/1f4fed1d858c9ddcaf0105aacf32e785/store_list_banner.jpg"/>
+            <img class="inside_banner_image" alt="banner" src="http://kodekloud.s3.amazonaws.com/sites/54e4c5846e6f640b1b000000/0c6440cf3178978c6ae2b530b853f567/contactus.jpg"/>
             This contest has ended. Please check back later for a new contest.
             <br> <br>
             To return to the homepage <a href= "/home">click here</a>.
