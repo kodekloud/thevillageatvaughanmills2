@@ -53,7 +53,7 @@
         <img class="contest_image" src="http://kodekloud.s3.amazonaws.com/sites/54e4c5846e6f640b1b000000/046fe35e3f30992aebd4274512fb63f4/Contest_858x500_Final.png" />
      <br>
      <div class="contest_form_div">
-           <p class="contest_description">Complete the form below for your chance to WIN! Contest closes May 31st, 2015. One entry per person. Winner will be contacted via email.</p>
+           <p class="contest_description">Complete the form below for your chance to WIN a $250 Gift Card to your favorite The Village at Vaughan Mills store! Contest closes May 31st, 2015. One entry per person. Winner will be contacted via email.</p>
 
          <form action="http://mobilefringe.createsend.com/t/d/s/tkhhlr/" method="post" id="contest_form">
            <p style="display:none">
@@ -111,13 +111,13 @@
             <span>
             <br>
                 <label for="newsletter_signup" style="display:none">Agree Terms</label>
-              <input type="checkbox" class="info_check" id="newsletter_signup"/>&nbsp;I agree to receive emails from The Village at Vaughan Mills.
+              <input type="checkbox" class="info_check" id="newsletter_signup"/>&nbsp;Yes, I would like to receive ongoing news related to events, promotions and special announcements from The Village at Vaughan Mills.
             </span>
             <br>
             <br>
             <span>
                 <label for="agree_terms" style="display:none">Agree Terms</label>
-              <input type="checkbox" class="info_check" id="agree_terms" required/>&nbsp;I agree to the <a href = "/rules_regulations"><u>terms and conditions</u></a>. 
+              <input type="checkbox" class="info_check" id="agree_terms" required/>&nbsp;I agree to the <a href = "/rules_regulations"><u>rules and regulations</u></a>. 
             </span>
             <br>
             <br>
