@@ -226,7 +226,7 @@
                             <div id="stylenotes_dd" class="submenu" style="display:none">
                                 <ul>
                                     <li><a href="/style_notes">Style Notes</a></li>
-                                    <li><a href="/decor_expert">Décor Expert</a></li>
+                                    <li><a href="/diy_project">Décor Expert</a></li>
                                     
                                 </ul>    
                             </div>
@@ -268,7 +268,7 @@
                         <ul class="dropdown-menu">
                                 <li><a href="/style_notes">Style Notes</a></li>
                 
-                                <li><a href="/decor_expert">Décor Expert</a></li>
+                                <li><a href="/diy_project">Décor Expert</a></li>
                             </ul> 
                         </li>
                          <li id="promotion_link"><a href="/promotions">Promotions</a></li>
