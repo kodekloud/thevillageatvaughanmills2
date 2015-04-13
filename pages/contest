@@ -50,10 +50,10 @@
     </div>
     
     <div class="inside_page_content">
-        <img class="contest_image" src="http://kodekloud.s3.amazonaws.com/sites/54e4c5846e6f640b1b000000/9ffcc8cfb11779e38de63120828031f7/contest.jpg" />
+        <img class="contest_image" src="http://kodekloud.s3.amazonaws.com/sites/54e4c5846e6f640b1b000000/046fe35e3f30992aebd4274512fb63f4/Contest_858x500_Final.png" />
      <br>
      <div class="contest_form_div">
-           <p class="contest_description">Complete the form below for your chance to WIN! Contest closes March 31st, 2015. One entry per person. Winner will be contacted via email.</p>
+           <p class="contest_description">Complete the form below for your chance to WIN! Contest closes May 31st, 2015. One entry per person. Winner will be contacted via email.</p>
 
          <form action="http://mobilefringe.createsend.com/t/d/s/tkhhlr/" method="post" id="contest_form">
            <p style="display:none">
