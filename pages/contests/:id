@@ -118,13 +118,13 @@
             <span>
                 <br>
                 <label for="newsletter_signup" style="display:none">Agree Terms</label>
-              <input type="checkbox" class="info_check" id="newsletter_signup" name="contest[newsletter]"/>&nbsp;I agree to receive emails from 10 Dundas East
+              <input type="checkbox" class="info_check" id="newsletter_signup" name="contest[newsletter]"/>&nbsp;Yes, I would like to receive ongoing news related to events, promotions and special announcements from The Village at Vaughan Mills.
             </span>
             <br>
             <br>
             <span>
                 <label for="agree_terms" style="display:none">Agree Terms</label>
-              <input type="checkbox" class="info_check" id="agree_terms" required/>&nbsp;I agree to the <a href = "/rules_regulations"><u>terms and conditions</u></a>. 
+              <input type="checkbox" class="info_check" id="agree_terms" required/>&nbsp;I agree to the <a href = "/rules_regulations"><u>rules and regulations</u></a>. 
             </span>
             <br>
             <br>
