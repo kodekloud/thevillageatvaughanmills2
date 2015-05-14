@@ -72,6 +72,16 @@
                     <p class="directory_content">{{name}}</p>
                     <p class="directory_content">{{address1}}</p>
                     <p class="directory_content">{{city}}, {{province_state}} {{postal_code}}</p>
+                    <br>
+                    <p class="directory_content"><strong>Ezio DiGiorgi</strong> 
+                    <br>Property Manager
+                    <br>(416) 236-7244
+                    <br><a href="mailto:edigiorgi@bentallkennedy.com">edigiorgi@bentallkennedy.com</a></p>
+                    <br>
+                    <p class="directory_content"><strong>Garnet Peirson</strong> 
+                    <br>Director of Leasing
+                    <br>1.866.681.2715
+                    <br><a href="mailto:gpeirson@bentallkennedy.com">gpeirson@bentallkennedy.com</a></p>
                 </script>
             </div>
             
