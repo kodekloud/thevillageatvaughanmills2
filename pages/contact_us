@@ -159,6 +159,7 @@
         function renderAll (){
             var propertyDetails = getPropertyDetails();
             renderPageData('#centre_info_container','#centre_info_template',propertyDetails, 'property_details')
+            renderPageData('#centre_info_container_mobile','#centre_info_template_mobile',propertyDetails, 'property_details')
             $("#loading_screen").hide();
             $("#main_content").show();
         }
